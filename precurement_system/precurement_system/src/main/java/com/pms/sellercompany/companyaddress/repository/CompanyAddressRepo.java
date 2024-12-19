@@ -40,7 +40,7 @@ public class CompanyAddressRepo {
 
         location1.setId(companyAddressDto.getLocation().getId());
         companyAddress.setLocation(location1);
-
+   
 
         Configuration configuration = new Configuration();
         configuration
