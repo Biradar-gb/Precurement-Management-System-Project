@@ -31,13 +31,13 @@ public class CompanyAddress {
         return id;
     }
 
-    public String getLocation_id() {
-        return location_id;
-    }
-
-    public void setLocation_id(String location_id) {
-        this.location_id = location_id;
-    }
+//    public String getLocation_id() {
+//        return location_id;
+//    }
+//
+//    public void setLocation_id(String location_id) {
+//        this.location_id = location_id;
+//    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -67,7 +67,7 @@ public class CompanyAddress {
     public void setLocation(Location location) {
         this.location = location;
     }
-//
+
 //    public String getLocation_id() {
 //        return location_id;
 //    }

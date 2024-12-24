@@ -19,9 +19,9 @@ public class CompanyAddressService {
     }
 
 
-//    public CompanyAddressDto updateAddress(CompanyAddressDto companyAddressDto){
-//
-//        return companyAddressRepo.updateAddress(companyAddressDto);
-//    }
+    public CompanyAddressDto updateAddress( Integer addressId , CompanyAddressDto companyAddressDto){
+
+        return companyAddressRepo.updateAddress(addressId , companyAddressDto);
+    }
 
 }

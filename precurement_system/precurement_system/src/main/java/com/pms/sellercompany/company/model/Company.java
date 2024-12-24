@@ -3,6 +3,7 @@ package com.pms.sellercompany.company.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pms.sellercompany.companyaddress.model.CompanyAddress;
+import com.pms.sellercompany.companybank.model.CompanyBank;
 import com.pms.sellercompany.companydocuments.model.CompanyDocuments;
 import com.pms.sellercompany.user.model.User;
 import jakarta.persistence.*;
@@ -40,6 +41,13 @@ public class Company {
 
     @Transient
     private Integer company_legal_details_id;
+
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name ="company_details_id" , referencedColumnName = "id")
+    private CompanyBank bank;
+
+    @Transient
+    private Integer bankId;
 
     @JsonManagedReference
     @OneToMany(targetEntity = User.class, cascade = CascadeType.MERGE ,fetch = FetchType.LAZY)
@@ -121,5 +129,13 @@ public class Company {
     public void setUser(List<User> user) {
 
         this.user = user;
+    }
+
+    public CompanyBank getBank() {
+        return bank;
+    }
+
+    public void setBank(CompanyBank bank) {
+        this.bank = bank;
     }
 }

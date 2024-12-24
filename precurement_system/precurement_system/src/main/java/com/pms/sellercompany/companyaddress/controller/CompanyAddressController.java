@@ -3,11 +3,9 @@ package com.pms.sellercompany.companyaddress.controller;
 
 import com.pms.sellercompany.companyaddress.dtos.CompanyAddressDto;
 import com.pms.sellercompany.companyaddress.service.CompanyAddressService;
+import jakarta.persistence.GeneratedValue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/companies")
@@ -17,17 +15,15 @@ public class CompanyAddressController {
     CompanyAddressService companyAddressService;
 
     @PostMapping("/address")
-    public CompanyAddressDto postAddress(CompanyAddressDto companyAddressDto){
+    public CompanyAddressDto postAddress(@RequestBody CompanyAddressDto companyAddressDto){
 
         return companyAddressService.postAddress(companyAddressDto);
     }
 
+    @PutMapping("/{id}")
+    public  CompanyAddressDto updateAddress( @PathVariable("id") Integer addressId , @RequestBody CompanyAddressDto companyAddressDto){
 
-//
-//    @PutMapping("/put")
-//    public CompanyAddressDto updateAddress(CompanyAddressDto CompanyAddressDto){
-//
-//        return companyAddressService.updateAddress(CompanyAddressDto);
-//    }
+        return companyAddressService.updateAddress(addressId ,companyAddressDto);
+    }
 
 }

@@ -14,6 +14,9 @@ public class LocationDto {
     private String country;
 
 //
+    public LocationDto(){
+
+    }
     public LocationDto(Location location){
         id= location.getId();
         state= location.getState();

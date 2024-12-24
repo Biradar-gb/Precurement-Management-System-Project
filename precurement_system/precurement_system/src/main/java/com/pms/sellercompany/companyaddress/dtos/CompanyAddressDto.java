@@ -18,16 +18,16 @@ public class CompanyAddressDto {
 
     private LocationDto location;
 
-    //
+    private Integer  addresId;
+
     public CompanyAddressDto() {
 
     }
 
-
 //   public CompanyAddressDto(CompanyAddress address) {
 //     address_L1 =address.getAddress_L1();
 //     address_L2 = address.getAddress_L2();
-//
+//     id = address.getId();
 //
 //    }
 
@@ -70,5 +70,13 @@ public class CompanyAddressDto {
 
     public void setLocation(LocationDto location) {
         this.location = location;
+    }
+
+    public Integer getAddresId() {
+        return addresId;
+    }
+
+    public void setAddresId(Integer addresId) {
+        this.addresId = addresId;
     }
 }

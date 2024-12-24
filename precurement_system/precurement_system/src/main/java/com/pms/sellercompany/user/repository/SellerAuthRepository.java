@@ -24,7 +24,6 @@ import org.springframework.stereotype.Repository;
 public class SellerAuthRepository {
 
 
-
     public CompanySignUpDto createsellerSignup(CompanySignUpDto companyDto) {
 
         Login login = new Login();
@@ -77,7 +76,6 @@ public class SellerAuthRepository {
     public LoginDto userSignin(LoginDto loginDto) {
 
 
-
         Transaction tx = null;
 
         Configuration configuration = new Configuration();
@@ -104,7 +102,7 @@ public class SellerAuthRepository {
             query.setParameter("password", loginDto.getPassword());
 
 
-            Login login= (Login) query.getSingleResult();
+            Login login = (Login) query.getSingleResult();
             loginDto.setId(login.getId());
 
             tx.commit();

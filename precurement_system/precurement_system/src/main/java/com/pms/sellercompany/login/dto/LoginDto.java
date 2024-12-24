@@ -10,11 +10,12 @@ public class LoginDto {
     public LoginDto() {
 
     }
-   public LoginDto(Login login) {
-       id = login.getId();
-       user_name = login.getUser_name();
-       password = login.getPassword();
-   }
+
+    public LoginDto(Login login) {
+        id = login.getId();
+        user_name = login.getUser_name();
+        password = login.getPassword();
+    }
 
     public String getUser_name() {
         return user_name;

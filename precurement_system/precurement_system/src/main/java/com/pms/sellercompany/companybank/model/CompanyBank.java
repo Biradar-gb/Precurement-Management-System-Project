@@ -1,6 +1,6 @@
 package com.pms.sellercompany.companybank.model;
 
-import com.pms.sellercompany.compnaycontact.model.CompanyContact;
+import com.pms.sellercompany.company.model.Company;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,23 +16,77 @@ public class CompanyBank {
     private String name;
 
     @Column(name="accont_number")
-     private Long account_number;
+     private Long accountNumber;
 
      @Column(name="branch")
      private String branch;
 
      @Column(name="ifsc_code")
-     private String ifsc_code;
+     private String ifscCode;
 
      @Column(name="pan_number")
-     private String pan_number;
+     private String panNumber;
 
      @OneToOne(cascade = CascadeType.MERGE)
      @JoinColumn(name="company_details_id",referencedColumnName = "id")
-     private CompanyContact company_details;
+     private Company companyDetails;
 
      @Transient
      private Integer  company_details_id;
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(Long accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getIfscCode() {
+        return ifscCode;
+    }
+
+    public void setIfscCode(String ifscCode) {
+        this.ifscCode = ifscCode;
+    }
+
+    public String getPanNumber() {
+        return panNumber;
+    }
+
+    public void setPanNumber(String panNumber) {
+        this.panNumber = panNumber;
+    }
+
+    public Company getCompanyDetails() {
+        return companyDetails;
+    }
+
+    public void setCompanyDetails(Company companyDetails) {
+        this.companyDetails = companyDetails;
+    }
 }
