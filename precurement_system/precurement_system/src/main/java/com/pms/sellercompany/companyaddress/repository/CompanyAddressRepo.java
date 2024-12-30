@@ -5,7 +5,7 @@ import com.pms.sellercompany.company.model.Company;
 import com.pms.sellercompany.companyaddress.dtos.CompanyAddressDto;
 import com.pms.sellercompany.companyaddress.model.CompanyAddress;
 import com.pms.sellercompany.companybank.model.CompanyBank;
-import com.pms.sellercompany.companydocuments.model.CompanyDocuments;
+import com.pms.sellercompany.companyLegaldocuments.model.CompanyLegalDocuments;
 import com.pms.sellercompany.companyowner.model.CompanyOwner;
 import com.pms.sellercompany.compnaycontact.model.CompanyContact;
 import com.pms.sellercompany.location.model.Location;
@@ -19,8 +19,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class CompanyAddressRepo {
@@ -44,7 +42,7 @@ public class CompanyAddressRepo {
                 .addAnnotatedClass(Login.class)
                 .addAnnotatedClass(CompanyAddress.class)
                 .addAnnotatedClass(CompanyBank.class)
-                .addAnnotatedClass(CompanyDocuments.class)
+                .addAnnotatedClass(CompanyLegalDocuments.class)
                 .addAnnotatedClass(CompanyContact.class)
                 .addAnnotatedClass(CompanyOwner.class)
                 .addAnnotatedClass(Location.class)
@@ -78,6 +76,7 @@ public class CompanyAddressRepo {
         return companyAddressDto;
     }
 
+
     public CompanyAddressDto updateAddress(Integer addressId, CompanyAddressDto companyAddressDto) {
 
 
@@ -88,7 +87,7 @@ public class CompanyAddressRepo {
                 .addAnnotatedClass(Login.class)
                 .addAnnotatedClass(CompanyAddress.class)
                 .addAnnotatedClass(CompanyBank.class)
-                .addAnnotatedClass(CompanyDocuments.class)
+                .addAnnotatedClass(CompanyLegalDocuments.class)
                 .addAnnotatedClass(CompanyContact.class)
                 .addAnnotatedClass(CompanyOwner.class)
                 .addAnnotatedClass(Location.class)
@@ -124,7 +123,46 @@ public class CompanyAddressRepo {
         tx.commit();
         companyAddressDto.setAddresId(companyAddressDto.getAddresId());
         return companyAddressDto;
-        
+
 
     }
+
+    public CompanyAddress getAddress(Integer id) {
+        Transaction tx = null;
+        CompanyAddress address = null;
+        Configuration configuration = new Configuration();
+        configuration
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Company.class)
+                .addAnnotatedClass(Login.class)
+                .addAnnotatedClass(CompanyAddress.class)
+                .addAnnotatedClass(CompanyBank.class)
+                .addAnnotatedClass(CompanyLegalDocuments.class)
+                .addAnnotatedClass(CompanyContact.class)
+                .addAnnotatedClass(CompanyOwner.class)
+                .addAnnotatedClass(Location.class)
+                .configure("Hibernate.cfg.xml");
+
+        ServiceRegistry sr = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(sr);
+
+
+        try {
+            Session session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+            String hql = ("FROM CompanyAddress WHERE id= :addressId");
+            Query query = session.createQuery(hql, CompanyAddress.class);
+            query.setParameter("addressId", id);
+            address = (CompanyAddress) query.getSingleResult();
+        }
+        catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+                e.printStackTrace();
+            }
+        }
+        tx.commit();
+     return address;
+    }
+
 }

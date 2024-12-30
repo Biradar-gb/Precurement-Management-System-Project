@@ -6,6 +6,8 @@ import com.pms.sellercompany.companybank.model.CompanyBank;
 import com.pms.sellercompany.companybank.repository.BankRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class BankService {
@@ -15,16 +17,14 @@ public class BankService {
     BankRepo bankRepo;
 
     public BankDto addBank(BankDto bankDto) {
+        return bankRepo.addBank(bankDto);
+    }
 
-        CompanyBank companyBank = new CompanyBank();
-        companyBank.setName(bankDto.getName());
-        companyBank.setAccountNumber(bankDto.getAccountNumber());
-        companyBank.setBranch(bankDto.getBranch());
-        companyBank.setIfscCode(bankDto.getIfscCode());
-        companyBank.setPanNumber(bankDto.getPanNumber());
-        companyBank.setCompanyDetails(bankDto.getCompanyDetails());
+    public  BankDto fetchBank(Integer id ){
+        return bankRepo.fetchBank(id);
+    }
 
-
-        return bankDto;
+    public BankDto updateBankDetails(Integer bankId, BankDto bankDto){
+        return bankRepo.updateBankDetails(bankId , bankDto);
     }
 }

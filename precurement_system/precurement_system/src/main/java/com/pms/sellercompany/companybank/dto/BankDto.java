@@ -13,7 +13,7 @@ public class BankDto {
     private String ifscCode;
     private String panNumber;
     private Integer companyId;
-  //  private Company companyDetails;
+    private Company companyDetails;
 
     public BankDto() {
 
@@ -27,7 +27,7 @@ public class BankDto {
         panNumber = companyBank.getPanNumber();
         ifscCode = companyBank.getIfscCode();
         branch = companyBank.getBranch();
-    //    companyDetails = companyBank.getCompanyDetails();
+        companyDetails = companyBank.getCompanyDetails();
     }
 
     public Integer getId() {
@@ -78,13 +78,13 @@ public class BankDto {
         this.panNumber = panNumber;
     }
 
-//    public Company getCompanyDetails() {
-//        return companyDetails;
-//    }
-//
-//    public void setCompanyDetails(Company companyDetails) {
-//        this.companyDetails = companyDetails;
-//    }
+    public Company getCompanyDetails() {
+        return companyDetails;
+    }
+
+    public void setCompanyDetails(Company companyDetails) {
+        this.companyDetails = companyDetails;
+    }
 
     public Integer getCompanyId() {
         return companyId;

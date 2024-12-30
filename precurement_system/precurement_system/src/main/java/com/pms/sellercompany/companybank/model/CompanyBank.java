@@ -12,10 +12,10 @@ public class CompanyBank {
     @Column(name="id")
     private Integer  id;
 
-    @Column(name="name")
+    @Column(name="bank_name")
     private String name;
 
-    @Column(name="accont_number")
+    @Column(name="account_number")
      private Long accountNumber;
 
      @Column(name="branch")
@@ -27,12 +27,12 @@ public class CompanyBank {
      @Column(name="pan_number")
      private String panNumber;
 
-     @OneToOne(cascade = CascadeType.MERGE)
+     @OneToOne(targetEntity = Company.class , cascade = CascadeType.MERGE ,fetch = FetchType.LAZY)
      @JoinColumn(name="company_details_id",referencedColumnName = "id")
      private Company companyDetails;
 
      @Transient
-     private Integer  company_details_id;
+     private Integer  companyId;
 
     public Integer getId() {
         return id;

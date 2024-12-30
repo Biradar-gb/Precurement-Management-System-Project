@@ -24,13 +24,6 @@ public class CompanyAddressDto {
 
     }
 
-//   public CompanyAddressDto(CompanyAddress address) {
-//     address_L1 =address.getAddress_L1();
-//     address_L2 = address.getAddress_L2();
-//     id = address.getId();
-//
-//    }
-
 
     public Integer getId() {
         return id;

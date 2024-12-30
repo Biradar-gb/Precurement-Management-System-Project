@@ -3,7 +3,7 @@ package com.pms.sellercompany.user.repository;
 import com.pms.sellercompany.company.model.Company;
 import com.pms.sellercompany.companyaddress.model.CompanyAddress;
 import com.pms.sellercompany.companybank.model.CompanyBank;
-import com.pms.sellercompany.companydocuments.model.CompanyDocuments;
+import com.pms.sellercompany.companyLegaldocuments.model.CompanyLegalDocuments;
 import com.pms.sellercompany.companyowner.model.CompanyOwner;
 import com.pms.sellercompany.compnaycontact.model.CompanyContact;
 import com.pms.sellercompany.location.model.Location;
@@ -46,7 +46,7 @@ public class SellerAuthRepository {
                 .addAnnotatedClass(Login.class)
                 .addAnnotatedClass(CompanyAddress.class)
                 .addAnnotatedClass(CompanyBank.class)
-                .addAnnotatedClass(CompanyDocuments.class)
+                .addAnnotatedClass(CompanyLegalDocuments.class)
                 .addAnnotatedClass(CompanyContact.class)
                 .addAnnotatedClass(CompanyOwner.class)
                 .addAnnotatedClass(Location.class)
@@ -85,7 +85,7 @@ public class SellerAuthRepository {
         configuration.addAnnotatedClass(Company.class);
         configuration.addAnnotatedClass(CompanyAddress.class);
         configuration.addAnnotatedClass(CompanyOwner.class);
-        configuration.addAnnotatedClass(CompanyDocuments.class);
+        configuration.addAnnotatedClass(CompanyLegalDocuments.class);
         configuration.addAnnotatedClass(CompanyBank.class);
         configuration.addAnnotatedClass(Location.class);
         configuration.configure("Hibernate.cfg.xml");

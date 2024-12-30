@@ -3,8 +3,9 @@ package com.pms.sellercompany.company.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pms.sellercompany.companyaddress.model.CompanyAddress;
-import com.pms.sellercompany.companybank.model.CompanyBank;
-import com.pms.sellercompany.companydocuments.model.CompanyDocuments;
+import com.pms.sellercompany.companyLegaldocuments.model.CompanyLegalDocuments;
+import com.pms.sellercompany.companyowner.model.CompanyOwner;
+import com.pms.sellercompany.compnaycontact.model.CompanyContact;
 import com.pms.sellercompany.user.model.User;
 import jakarta.persistence.*;
 
@@ -35,27 +36,37 @@ public class Company {
     private String address_id;
 
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "company_leagal_details_id", referencedColumnName = "id")
-    private CompanyDocuments legalDetails;
+    private CompanyLegalDocuments legalDetails;
 
     @Transient
     private Integer company_legal_details_id;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name ="company_details_id" , referencedColumnName = "id")
-    private CompanyBank bank;
-
-    @Transient
-    private Integer bankId;
-
     @JsonManagedReference
-    @OneToMany(targetEntity = User.class, cascade = CascadeType.MERGE ,fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_details_id" , referencedColumnName = "id")
+    @OneToMany(targetEntity = User.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_details_id", referencedColumnName = "id")
     private List<User> user;
 
     @Transient
     private List<User> users;
+
+    @JsonManagedReference
+    @OneToMany(targetEntity = CompanyContact.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_details_id")
+    private List<CompanyContact> companyContact;
+
+    @Transient
+    CompanyContact contact;
+
+
+    @OneToMany(targetEntity = CompanyOwner.class, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "company_details_id")
+    private List<CompanyOwner> companyOwner;
+
+    @Transient
+    private CompanyOwner owner;
+
 
     public List<User> getUsers() {
         return users;
@@ -106,21 +117,14 @@ public class Company {
         this.address_id = address_id;
     }
 
-    public CompanyDocuments getLegalDetails() {
+    public CompanyLegalDocuments getLegalDetails() {
         return legalDetails;
     }
 
-    public void setLegalDetails(CompanyDocuments legalDetails) {
+    public void setLegalDetails(CompanyLegalDocuments legalDetails) {
         this.legalDetails = legalDetails;
     }
 
-    public Integer getCompany_legal_details_id() {
-        return company_legal_details_id;
-    }
-
-    public void setCompany_legal_details_id(Integer company_legal_details_id) {
-        this.company_legal_details_id = company_legal_details_id;
-    }
 
     public List<User> getUser() {
         return user;
@@ -131,11 +135,27 @@ public class Company {
         this.user = user;
     }
 
-    public CompanyBank getBank() {
-        return bank;
+    public Integer getCompany_legal_details_id() {
+        return company_legal_details_id;
     }
 
-    public void setBank(CompanyBank bank) {
-        this.bank = bank;
+    public void setCompany_legal_details_id(Integer company_legal_details_id) {
+        this.company_legal_details_id = company_legal_details_id;
+    }
+
+    public List<CompanyContact> getCompanyContact() {
+        return companyContact;
+    }
+
+    public void setCompanyContact(List<CompanyContact> companyContact) {
+        this.companyContact = companyContact;
+    }
+
+    public List<CompanyOwner> getCompanyOwner() {
+        return companyOwner;
+    }
+
+    public void setCompanyOwner(List<CompanyOwner> companyOwner) {
+        this.companyOwner = companyOwner;
     }
 }

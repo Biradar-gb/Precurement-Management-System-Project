@@ -1,5 +1,6 @@
 package com.pms.sellercompany.compnaycontact.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.pms.sellercompany.company.model.Company;
 import jakarta.persistence.*;
 
@@ -14,12 +15,13 @@ public class CompanyContact {
      @Column(name="email")
      private String email;
 
-     @Column(name="numebr")
-     private String number;
+     @Column(name="number")
+     private String phone_Number;
 
-     @ManyToOne(  targetEntity = Company.class, fetch = FetchType.LAZY)
+     @JsonBackReference
+     @ManyToOne(  targetEntity = Company.class,cascade =  CascadeType.MERGE, fetch = FetchType.LAZY)
      @JoinColumn(name="company_details_id",referencedColumnName = "id")
-     private Company compnay_details;
+     private Company company_details;
 
      @Transient
      private String company_details_id;
@@ -40,27 +42,20 @@ public class CompanyContact {
           this.email = email;
      }
 
-     public String getNumber() {
-          return number;
+     public String getPhone_Number() {
+          return phone_Number;
      }
 
-     public void setNumber(String number) {
-          this.number = number;
+     public void setPhone_Number(String phone_Number) {
+          this.phone_Number = phone_Number;
      }
 
-     public Company getCompnay_details() {
-          return compnay_details;
+     public Company getCompanyy_details() {
+          return company_details;
      }
 
-     public void setCompnay_details(Company compnay_details) {
-          this.compnay_details = compnay_details;
+     public void setCompany_details(Company company_details) {
+          this.company_details = company_details;
      }
 
-     public String getCompany_details_id() {
-          return company_details_id;
-     }
-
-     public void setCompany_details_id(String company_details_id) {
-          this.company_details_id = company_details_id;
-     }
 }
