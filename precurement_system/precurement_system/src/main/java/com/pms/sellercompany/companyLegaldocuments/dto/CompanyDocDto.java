@@ -7,11 +7,19 @@ public class CompanyDocDto {
     private String cinNum;
     private String dunNum;
     private String gstNum;
+    private Integer compId;
 
 
+    public CompanyDocDto() {
 
-    public CompanyDocDto(){
+    }
 
+    public Integer getCompId() {
+        return compId;
+    }
+
+    public void setCompId(Integer compId) {
+        this.compId = compId;
     }
 
     public Integer getId() {

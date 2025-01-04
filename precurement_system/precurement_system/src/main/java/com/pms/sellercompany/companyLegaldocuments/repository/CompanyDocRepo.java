@@ -49,8 +49,14 @@ public class CompanyDocRepo {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
 
+        String hql = ("FROM Company WHERE id = :companyId");
+        Query query = session.createQuery(hql, Company.class);
+        query.setParameter("companyId", companyDocDto.getCompId());
+        Company company = (Company) query.getSingleResult();
+
 
         session.persist(companyDocuments);
+        company.setLegalDetails(companyDocuments);
         tx.commit();
 
         return companyDocuments;

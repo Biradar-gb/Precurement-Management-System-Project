@@ -20,7 +20,7 @@ public class OwnerController {
     }
 
     @PutMapping("/owners/{id}")
-    public Integer updateOwner(@PathVariable("id") Integer id, @RequestBody OwnerDto dto) {
+    public CompanyOwner  updateOwner(@PathVariable("id") Integer id, @RequestBody OwnerDto dto) {
         return service.updateOwner(id, dto);
 
     }

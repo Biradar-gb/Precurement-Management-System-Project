@@ -8,9 +8,11 @@ public class ProductColour {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private  Integer colour_id;
 
 
     private  Integer product_details_id;
 
 }
+

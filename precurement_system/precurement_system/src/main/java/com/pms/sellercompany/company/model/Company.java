@@ -2,6 +2,7 @@ package com.pms.sellercompany.company.model;
 
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.pms.products.models.Product;
 import com.pms.sellercompany.companyaddress.model.CompanyAddress;
 import com.pms.sellercompany.companyLegaldocuments.model.CompanyLegalDocuments;
 import com.pms.sellercompany.companyowner.model.CompanyOwner;
@@ -61,12 +62,18 @@ public class Company {
 
 
     @OneToMany(targetEntity = CompanyOwner.class, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "company_details_id")
+    @JoinColumn(name = "company_details_id", referencedColumnName = "id")
     private List<CompanyOwner> companyOwner;
 
     @Transient
     private CompanyOwner owner;
 
+    @OneToMany(targetEntity = Product.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id", referencedColumnName = "company_details_id")
+    private List<Product> products;
+
+    @Transient
+    private List<Product> p;
 
     public List<User> getUsers() {
         return users;
@@ -157,5 +164,21 @@ public class Company {
 
     public void setCompanyOwner(List<CompanyOwner> companyOwner) {
         this.companyOwner = companyOwner;
+    }
+
+    public CompanyContact getContact() {
+        return contact;
+    }
+
+    public void setContact(CompanyContact contact) {
+        this.contact = contact;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

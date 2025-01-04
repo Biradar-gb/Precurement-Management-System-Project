@@ -19,7 +19,7 @@ public class OwnerService {
         return repo.addOwner(dto);
     }
 
-    public Integer updateOwner(Integer id, OwnerDto dto) {
+    public CompanyOwner updateOwner(Integer id, OwnerDto dto) {
         return repo.updateOwner(id, dto);
 
     }
