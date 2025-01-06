@@ -58,9 +58,9 @@ public class Company {
     private List<CompanyContact> companyContact;
 
     @Transient
-    CompanyContact contact;
+    private CompanyContact contact;
 
-
+    @JsonManagedReference
     @OneToMany(targetEntity = CompanyOwner.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "company_details_id", referencedColumnName = "id")
     private List<CompanyOwner> companyOwner;
@@ -68,6 +68,7 @@ public class Company {
     @Transient
     private CompanyOwner owner;
 
+    @JsonManagedReference
     @OneToMany(targetEntity = Product.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "id", referencedColumnName = "company_details_id")
     private List<Product> products;

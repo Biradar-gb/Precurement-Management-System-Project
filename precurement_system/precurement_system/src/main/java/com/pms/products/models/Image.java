@@ -15,8 +15,8 @@ public class Image {
     private String image;
 
     @ManyToOne(targetEntity = Product.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @Column(name = "Product_details_id")
-    private Integer productId;
+    @JoinColumn(name = "Product_details_id" ,referencedColumnName = "id")
+    private Product productId;
 
     @Transient
     private Integer product_details_id;
@@ -37,11 +37,11 @@ public class Image {
         this.image = image;
     }
 
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
+//    public Product getProductId() {
+//        return productId;
+//    }
+//
+//    public void setProductId(Product productId) {
+//        this.productId = productId;
+//    }
 }

@@ -1,5 +1,7 @@
 package com.pms.sellercompany.companyowner.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pms.sellercompany.company.model.Company;
 import jakarta.persistence.*;
 
@@ -22,6 +24,7 @@ public class CompanyOwner {
     @Column(name="mobile")
     private Long mobileNumber;
 
+    @JsonBackReference
     @ManyToOne( targetEntity = Company.class ,cascade = CascadeType.MERGE ,fetch = FetchType.LAZY)
     @JoinColumn(name="company_details_id",referencedColumnName = "id")
     private Company company_details;

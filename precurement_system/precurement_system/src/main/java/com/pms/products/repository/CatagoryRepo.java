@@ -1,4 +1,4 @@
 package com.pms.products.repository;
 
-public class ProductOfferRepo {
+public class CatagoryRepo {
 }

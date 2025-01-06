@@ -1,5 +1,6 @@
 package com.pms.products.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Model {
     @Column(name = "m_name")
     private String modelName;
 
+    @JsonManagedReference
     @OneToMany(targetEntity = Product.class, cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "model_details_id", referencedColumnName = "id")
     private List<Product> product;

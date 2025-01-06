@@ -1,4 +1,4 @@
 package com.pms.products.repository;
 
-public class ProductColourRepo {
+public class ImagesRepo {
 }

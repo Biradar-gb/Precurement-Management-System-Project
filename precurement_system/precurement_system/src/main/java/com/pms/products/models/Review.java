@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "reviews")
-public class ProductReview {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

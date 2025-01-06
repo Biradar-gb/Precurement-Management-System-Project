@@ -10,7 +10,6 @@ public class BrandDto {
 
     private String brandName;
 
-    private List<Product> p ;
 
     public Integer getId() {
         return id;
@@ -28,11 +27,11 @@ public class BrandDto {
         this.brandName = brandName;
     }
 
-    public List<Product> getP() {
-        return p;
-    }
-
-    public void setP(List<Product> p) {
-        this.p = p;
-    }
+//    public List<Product> getP() {
+//        return p;
+//    }
+//
+//    public void setP(List<Product> p) {
+//        this.p = p;
+//    }
 }
